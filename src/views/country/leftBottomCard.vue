@@ -1,7 +1,7 @@
 <template>
   <div class="land-card" :style="{ left:'3%', bottom: '3%', width: `${width}px`, height: '420px' }">
     <div class="title">样地基本信息
-      <el-button class="bt" type="primary" @click="gotoPlot()">样地统计数据</el-button>
+      <el-button class="bt" icon="el-icon-data-analysis" type="primary" @click="gotoPlot()">样地统计数据</el-button>
     </div>
     <div class="icon-flex">
       <div class="img-dev"><el-image class="img" :src="hotImage" /></div>

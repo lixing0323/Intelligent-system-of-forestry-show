@@ -1,6 +1,6 @@
 <template>
   <div class="tab-container">
-    <div class="tab-card business-tab" :style="{ width: '80px', height: 'auto' }">
+    <div class="tab-card business-tab" :style="{ width: '120px', height: 'auto' }">
       <el-tabs :tab-position="'left'">
         <el-tab-pane v-for="(t, index) in tabs" :key="index" :label="t" />
       </el-tabs>
