@@ -16,8 +16,8 @@
         </ht-table-column>
         <ht-table-column type="index" width="55" label="序号" />
         <ht-table-column label="样木名称" prop="name" min-width="100" />
-        <ht-table-column label="树径初始值" prop="width" min-width="100" />
-        <ht-table-column label="树高增长值" prop="height" min-width="100" />
+        <ht-table-column label="树径" prop="width" min-width="100" />
+        <ht-table-column label="树高" prop="height" min-width="100" />
         <ht-table-column label="电量" prop="count" min-width="100" />
         <ht-table-column label="信号" prop="time" min-width="160" />
         <ht-table-column label="备注" prop="comment" min-width="160" />
@@ -68,11 +68,11 @@ export default {
       { id: '7', name: '样木7', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' }
     ]
     this.lineData = [
-      { name: '树径初始值', type: 'line', stack: 'Total', data: [120, 132, 101, 134, 90, 230, 210],
+      { name: '树径', type: 'line', stack: 'Total', data: [120, 132, 101, 134, 90, 230, 210],
         itemStyle: { lineStyle: { color: '#73A8E4' }}
       },
       {
-        name: '树高增长值', type: 'line', stack: 'Total', data: [220, 182, 191, 234, 290, 330, 310],
+        name: '树高', type: 'line', stack: 'Total', data: [220, 182, 191, 234, 290, 330, 310],
         itemStyle: { lineStyle: { color: '#2A9A30' }}
       }
     ]
