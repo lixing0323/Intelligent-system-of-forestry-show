@@ -4,7 +4,7 @@
     <back-icon />
     <full-screen />
 
-    <middle-top-card title="渭南市" :show-bar="true" />
+    <middle-top-card :title="cityName" :show-bar="true" />
     <left-top-card :card-loading="rightTopLoading" />
     <right-top-card :card-loading="rightTopLoading" :forestry="forestry" />
     <bottom-card />
