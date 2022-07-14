@@ -1,11 +1,11 @@
 <template>
-  <div class="rectangle">
-    <div class="rectangle-title">{{ title }}</div>
+  <div class="rectangle" :style="{width: `${width}px`, height: `${height}px`}">
+    <div class="rectangle-title" :style="{'font-size': `${nowSize(18)}px`, 'padding-top': `${nowSize(30)}px` }">{{ title }}</div>
     <div class="rectangle-value">
-      <span> <ht-count-number :start-val="0" :end-val="Number(area)" class="number" :decimals="0" /></span>
-      <span class="unit">万公顷</span>
-      <span>  / <ht-count-number :start-val="0" :end-val="Number(weight)" class="number" :decimals="0" /></span>
-      <span class="unit">百万吨</span>
+      <span><ht-count-number :start-val="0" :end-val="Number(area)" class="number" :style="numberStyle" :decimals="0" /></span>
+      <span class="unit" :style="unitStyle">万公顷</span>
+      <span>/<ht-count-number :start-val="0" :end-val="Number(weight)" class="number" :style="numberStyle" :decimals="0" /></span>
+      <span class="unit" :style="unitStyle">百万吨</span>
     </div>
   </div>
 </template>
@@ -27,10 +27,26 @@ export default {
     weight: {
       type: [Number, String],
       default: undefined
+    },
+    width: {
+      type: Number,
+      default: 220
+    },
+    height: {
+      type: Number,
+      default: 120
     }
   },
   data() {
     return {
+    }
+  },
+  computed: {
+    numberStyle() {
+      return { 'font-size': `${this.nowSize(24)}px` }
+    },
+    unitStyle() {
+      return { 'font-size': `${this.nowSize(10)}px` }
     }
   },
   methods: {
@@ -42,25 +58,19 @@ export default {
 @import "~@/styles/element-variables.scss";
   .rectangle {
     background-color: #191E2C;
-    width: 220px;
-    height: 120px;
 
     .rectangle-title {
-      font-size: 18px;
       color: #BEBEBE;
       text-align: center;
-      padding-top: 30px;
     }
     .rectangle-value {
       margin-top: 5px;
       text-align: center;
       .number {
-        font-size: 22px;
         color: $--color-font;
         font-weight: bold;
       }
       .unit {
-        font-size: 10px;
         color: $--color-font;
       }
     }

@@ -1,17 +1,17 @@
 <template>
-  <div class="input-card" :style="{left:'3%', bottom: '3%', width: '500px', height: '400px' }">
+  <div class="input-card" style="left:3%;bottom:3%" :style="getCardStyle()">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">样地碳汇量/碳储量占比</div>
+      <div class="title" :style="getTitleStyle()">样地碳汇量/碳储量占比</div>
       <div class="pie-dot">
         <span> <i class="summary-i" /> 碳汇量</span>
         <span class="store"> <i class="store-i" /> 碳储量</span>
       </div>
       <div class="circle-flex">
-        <circle-chart id="first" :chart-data="first" :main-title="'40.95%'" :sub-title="'林地'" class="item" />
-        <circle-chart id="second" :chart-data="second" :main-title="'9.65%'" :sub-title="'草原'" class="item" />
-        <circle-chart id="third" :chart-data="third" :main-title="'49.39%'" :sub-title="'湿地'" class="item" />
-        <circle-chart id="four" :chart-data="four" :main-title="'0.01%'" :sub-title="'荒漠'" class="item" />
+        <circle-chart id="first" :chart-data="first" :main-title="'40.95%'" :sub-title="'林地'" :width="itemWidth" :height="itemHeight" :style="itemStyleObj" />
+        <circle-chart id="second" :chart-data="second" :main-title="'9.65%'" :sub-title="'草原'" :width="itemWidth" :height="itemHeight" :style="itemStyleObj" />
+        <circle-chart id="third" :chart-data="third" :main-title="'49.39%'" :sub-title="'湿地'" :width="itemWidth" :height="itemHeight" :style="itemStyleObj" />
+        <circle-chart id="four" :chart-data="four" :main-title="'0.01%'" :sub-title="'荒漠'" :width="itemWidth" :height="itemHeight" :style="itemStyleObj" />
       </div>
     </template>
 
@@ -35,6 +35,17 @@ export default {
       second: [],
       third: [],
       four: []
+    }
+  },
+  computed: {
+    itemWidth() {
+      return this.nowWidth(230)
+    },
+    itemHeight() {
+      return this.nowHeight(125)
+    },
+    itemStyleObj() {
+      return { width: `${this.itemWidth}px`, 'margin-top': `${this.nowSize(10)}px` }
     }
   },
   created() {
@@ -70,20 +81,13 @@ export default {
     border-radius: 0.4rem;
     display: block;
     position: absolute;
-    padding: 20px;
     .title {
-      font-size: 24px;
       font-weight: bold;
-      padding: 20px 0 0 20px;
     }
   }
   .circle-flex {
     display: flex;
     flex-wrap: wrap;
-    .item {
-      width: 230px;
-      margin-top: 10px;
-    }
   }
   .pie-dot {
     text-align: right;

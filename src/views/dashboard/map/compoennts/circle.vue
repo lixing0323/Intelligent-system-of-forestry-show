@@ -27,6 +27,14 @@ export default {
     id: {
       type: [Number, String],
       default: undefined
+    },
+    width: {
+      type: Number,
+      default: 230
+    },
+    height: {
+      type: Number,
+      default: 130
     }
   },
   data() {
@@ -38,8 +46,8 @@ export default {
   computed: {
     styleObject() {
       return {
-        width: '230px',
-        height: '130px'
+        width: `${this.width}px`,
+        height: `${this.height}px`
       }
     }
   },
@@ -63,10 +71,10 @@ export default {
     setData() {
       const option = {
         grid: {
-          x: 20,
-          y: 20,
-          x2: 20,
-          y2: 20,
+          x: this.nowSize(20),
+          y: this.nowSize(20),
+          x2: this.nowSize(20),
+          y2: this.nowSize(20),
           borderWidth: 10
         },
         title: {

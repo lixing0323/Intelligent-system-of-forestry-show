@@ -32,7 +32,7 @@ import 'vue-video-player/src/custom-theme.css'
 
 import * as filters from './filters' // global filters
 
-// region HackTech Components
+import commonMixin from '@/views/mixins/commonMixin'
 import HtTable from '@/components/HtTable'
 import HtForm from '@/components/HtForm'
 import HtSelect from '@/components/HtSelect'
@@ -75,6 +75,7 @@ Vue.component('HtFileFormItem', HtFileFormItem)
 Vue.component(HtRetentiveTabs.name, HtRetentiveTabs)
 Vue.component('HtCard', HtCard)
 
+Vue.mixin(commonMixin)
 // Vue-moment
 const moment = require('moment')
 require('moment/locale/zh-cn')

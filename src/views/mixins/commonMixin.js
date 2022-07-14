@@ -38,6 +38,12 @@ export default {
         current = size * clientWidth / 1920
       }
       return current
+    },
+    getTitleStyle() {
+      return { 'font-size': `${this.nowSize(24)}px`, 'padding': `${this.nowWidth(20)}px 0 0 ${this.nowWidth(20)}px` }
+    },
+    getCardStyle() {
+      return { width: `${this.nowWidth(500)}px`, height: `${this.nowHeight(400)}px`, padding: `${this.nowSize(20)}px` }
     }
   }
 }

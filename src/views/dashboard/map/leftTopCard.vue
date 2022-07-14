@@ -1,9 +1,9 @@
 <template>
-  <div class="input-card" :style="{ left:'3%', top: '100px', width: '500px', height: '400px' }">
+  <div class="input-card" style="left:3%;top:100px" :style="getCardStyle()">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">碳储量总面积占比</div>
-      <pie-chart :id="'area'" ref="eChart" :chart-data="data" class="pie" />
+      <div class="title" :style="getTitleStyle()">碳储量总面积占比</div>
+      <pie-chart :id="'area'" ref="eChart" :chart-data="data" :width="nowWidth(430)" :height="nowHeight(300)" class="pie" />
     </template>
 
   </div>
@@ -48,11 +48,8 @@ export default {
     border-radius: 0.4rem;
     display: block;
     position: absolute;
-    padding: 20px;
     .title {
-      font-size: 24px;
       font-weight: bold;
-      padding: 20px 0 0 20px;
     }
     .pie {
       margin: 10px;

@@ -93,6 +93,7 @@ export default {
           label: {
             formatter: '{b}: {c}\n({d}%)',
             borderWidth: 20,
+            overflow: 'break',
             rich: {
               a: {
                 color: '#333',
@@ -107,6 +108,10 @@ export default {
                 lineHeight: 30
               }
             }
+          },
+          labelLine: {
+            show: true,
+            length: this.nowWidth(10)
           },
           data: this.chartData
         }]
