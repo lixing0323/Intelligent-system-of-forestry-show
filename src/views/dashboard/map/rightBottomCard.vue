@@ -1,13 +1,13 @@
 <template>
-  <div class="input-card" :style="{right:'3%', bottom: '3%', width: '500px', height: '400px' }">
+  <div class="input-card" style="right:3%; bottom:3%" :style="getCardStyle()">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">样地碳储量排名</div>
-      <el-radio-group v-model="radio" class="tree-check-radio" @change="changeRadio">
+      <div class="title" :style="getTitleStyle()">样地碳储量排名</div>
+      <el-radio-group v-model="radio" :style="{'margin-top': `${nowHeight(20)}px`}" @change="changeRadio">
         <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
       </el-radio-group>
       <div class="progress-div">
-        <div class="right-title">碳储量(吨)</div>
+        <div :style="rightTitleStyleObj">碳储量(吨)</div>
         <progress-line v-for="(item, index) in items" :key="index" :title="item.title" :value="item.value" :max="40" />
       </div>
     </template>
@@ -43,6 +43,11 @@ export default {
       ]
     }
   },
+  computed: {
+    rightTitleStyleObj() {
+      return { 'text-align': 'right', 'font-size': `${this.nowSize(12)}px`, 'margin-bottom': `${this.nowHeight(5)}px` }
+    }
+  },
   created() {
     this.items = Object.assign([], this.values)
   },
@@ -71,23 +76,12 @@ export default {
     border-width: 0;
     color: $--color-font;
     border-radius: 0.4rem;
-    padding: 20px;
     display: block;
     position: absolute;
     .title {
-      font-size: 24px;
       font-weight: bold;
-      padding: 20px 0 0 20px;
-    }
-    .tree-check-radio {
-      margin-top: 20px;
     }
     .progress-div {
-      .right-title {
-        text-align: right;
-        font-size: 12px;
-        margin-bottom: 5px;
-      }
     }
   }
 

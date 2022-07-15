@@ -1,8 +1,8 @@
 <template>
-  <div class="progress">
-    <div class="title" @click="gotoPlot()">{{ title }}</div>
-    <div class="line" :style="`width: ${lineWidth}px`">
-      <span class="color" :style="`width: ${getProgressWidth()}px`" />
+  <div class="progress" :style="progressStyleObj">
+    <div class="title" :style="titleStyleObj" @click="gotoPlot()">{{ title }}</div>
+    <div class="line" :style="lineStyleObj">
+      <span class="color" :style="colorStyleObj" />
       <span class="value"> <ht-count-number :start-val="0" :end-val="value" class="value" /></span>
     </div>
   </div>
@@ -28,7 +28,21 @@ export default {
   },
   data() {
     return {
-      lineWidth: 360
+      lineWidth: this.nowWidth(360)
+    }
+  },
+  computed: {
+    progressStyleObj() {
+      return { 'height': `${this.nowHeight(30)}px`, 'line-height': `${this.nowHeight(22)}px` }
+    },
+    titleStyleObj() {
+      return { 'font-size': `${this.nowSize(12)}px`, 'width': `${this.nowWidth(100)}px` }
+    },
+    lineStyleObj() {
+      return { 'height': `${this.nowHeight(20)}px`, 'width': `${this.lineWidth}px` }
+    },
+    colorStyleObj() {
+      return { 'height': `${this.nowHeight(20)}px`, 'width': `${this.getProgressWidth()}px` }
     }
   },
   methods: {
@@ -47,19 +61,14 @@ export default {
 <style lang="scss" scoped>
 @import "~@/styles/element-variables.scss";
   .progress {
-    height: 30px;
-    line-height: 22px;
     display: flex;
     flex-wrap: nowrap;
     .title {
-      font-size: 12px;
       color: #D6D6D6;
-      width: 100px;
       cursor: pointer;
     }
     .line {
       display: inline-block;
-      height: 20px;
       margin-top: 1px;
       background-color: #191E2C;
       border-radius:20px;
@@ -67,7 +76,6 @@ export default {
         background-color: $--color-font;
         border-radius:20px;
         display: inline-block;
-        height: 20px;
       }
       .value {
         color: $--color-font;

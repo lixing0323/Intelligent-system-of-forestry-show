@@ -42,13 +42,13 @@ export default {
       return this.nowHeight(120)
     },
     itemStyleObj() {
-      return { width: `${this.itemWidth}px`, 'margin-top': `${this.nowSize(20)}px`, 'vertical-align': 'middle' }
+      return { width: `${this.itemWidth}px`, 'margin-top': `${this.nowHeight(20)}px`, 'vertical-align': 'middle' }
     },
     rightStyleObj() {
-      return { 'margin-left': `${this.nowSize(20)}px` }
+      return { 'margin-left': `${this.nowWidth(20)}px` }
     },
     topStyleObj() {
-      return { 'margin-top': `${this.nowSize(20)}px` }
+      return { 'margin-top': `${this.nowHeight(20)}px` }
     }
   },
   created() {
