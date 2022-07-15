@@ -1,20 +1,31 @@
 <template>
   <div>
-    <div class="province-label" :style="{left: left, top: '100px', width: `${width}px`, 'text-align': 'center' }">
+    <div ref="province" class="province-label" :style="{left: left, top: '100px', width: `${width}px`, 'text-align': 'center', 'margin-top':`${nowHeight(10)}px`}">
       <center-title :title="title" />
 
-      <div v-if="showStatistics" class="province-flex-card">
+      <div v-if="showStatistics" class="province-flex-card" :style="{'margin-top': `${nowHeight(20)}px`}">
         <total-statistics :count="115" :area="1781.58" :quantity="4967.90" />
       </div>
     </div>
 
-    <div v-if="showBar" class="area-card" :style="{left: left, width: `${width}px`}">
-      <div class="title">各区域分布
+    <div
+      v-if="showBar"
+      class="area-card"
+      :style="{left: left, width: `${width}px`,
+               'padding': `${nowHeight(20)}px`, 'margin-top': `${top}px`}"
+    >
+      <div class="title" :style="{'font-size': `${nowSize(18)}px`}">各区域分布
         <el-radio-group v-model="radio" class="tree-check-radio area-radio" @change="changeRadio">
           <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
         </el-radio-group>
       </div>
-      <echarts-bar class="echarts-bar" :chart-data="items" :width="width-40" :height="150" />
+      <echarts-bar
+        class="echarts-bar"
+        :style="{ 'margin-top': `${nowHeight(10)}px`}"
+        :chart-data="items"
+        :width="width-40"
+        :height="nowHeight(150)"
+      />
     </div>
   </div>
 
@@ -46,6 +57,7 @@ export default {
     return {
       data: [],
       width: document.documentElement.clientWidth / 3,
+      top: undefined,
       radio: '样地数',
       labels: ['样地数', '面积', '碳储量'],
       items: []
@@ -64,6 +76,9 @@ export default {
       { value: 25, name: '湿地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
     ]
     this.items = [120, 190, 150, 80, 70, 110, 130]
+  },
+  mounted() {
+    this.top = this.$refs.province.offsetHeight + 100 + this.nowHeight(15 + 20)
   },
   methods: {
     changeRadio(val) {
@@ -87,11 +102,9 @@ export default {
 .province-label {
   display: block;
   position: absolute;
-  margin-top: 10px;
 }
 .province-flex-card {
   position: relative;
-  margin-top: 20px;
 }
 
 .area-card {
@@ -100,17 +113,13 @@ export default {
   border-width: 0;
   color: $--color-font;
   border-radius: 0.4rem;
-  padding: 20px;
-  margin-top: 280px;
   position: relative;
   .title {
-    font-size: 18px;
   }
   .area-radio {
     float: right;
   }
   .echarts-bar {
-    margin-top: 10px;
   }
 }
 </style>

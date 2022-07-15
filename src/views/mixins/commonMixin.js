@@ -40,7 +40,7 @@ export default {
       return current
     },
     getTitleStyle() {
-      return { 'font-size': `${this.nowSize(24)}px`, 'padding': `${this.nowHeight(20)}px 0 0 ${this.nowWidth(20)}px` }
+      return { 'font-weight': 'bold', 'font-size': `${this.nowSize(24)}px`, 'padding': `${this.nowHeight(20)}px 0 0 ${this.nowWidth(20)}px` }
     },
     getCardStyle() {
       return { width: `${this.nowWidth(500)}px`, height: `${this.nowHeight(400)}px`, padding: `${this.nowHeight(20)}px` }

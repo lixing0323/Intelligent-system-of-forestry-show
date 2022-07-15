@@ -1,14 +1,14 @@
 <template>
-  <div class="input-card" :style="{ right:'3%', top: '100px', width: '500px', height: '400px' }">
+  <div class="input-card" style="right:3%; top:100px" :style="getCardStyle()">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
 
     <template v-if="!cardLoading">
-      <div class="title">总面积及总碳储量</div>
+      <div class="title" :style="getTitleStyle()">总面积及总碳储量</div>
       <div class="rectangle-flex">
-        <div class="item"><rectangle :title="'林地面积/碳储'" :area="30.3" :weight="2034.26" /></div>
-        <div class="item right"> <rectangle :title="'草原面积/碳储'" :area="5.6" :weight="479.37" /></div>
-        <div class="item top"><rectangle :title="'湿地面积/碳储'" :area="0.95" :weight="2453.7" /></div>
-        <div class="item top right"><rectangle :title="'荒漠面积/碳储'" :area="0" :weight="0.57" /></div>
+        <div :style="itemStyleObj"><rectangle :title="'林地面积/碳储'" :area="30.3" :weight="2034.26" :width="itemWidth" :height="itemHeight" /></div>
+        <div :style="[itemStyleObj, rightStyleObj]"> <rectangle :title="'草原面积/碳储'" :area="5.6" :weight="479.37" :width="itemWidth" :height="itemHeight" /></div>
+        <div :style="[itemStyleObj, topStyleObj]"><rectangle :title="'湿地面积/碳储'" :area="0.95" :weight="2453.7" :width="itemWidth" :height="itemHeight" /></div>
+        <div :style="[itemStyleObj, topStyleObj, rightStyleObj]"><rectangle :title="'荒漠面积/碳储'" :area="0" :weight="0.57" :width="itemWidth" :height="itemHeight" /></div>
       </div>
     </template>
   </div>
@@ -34,6 +34,23 @@ export default {
       rectangleLoading: false
     }
   },
+  computed: {
+    itemWidth() {
+      return this.nowWidth(220)
+    },
+    itemHeight() {
+      return this.nowHeight(120)
+    },
+    itemStyleObj() {
+      return { width: `${this.itemWidth}px`, 'margin-top': `${this.nowHeight(20)}px`, 'vertical-align': 'middle' }
+    },
+    rightStyleObj() {
+      return { 'margin-left': `${this.nowWidth(20)}px` }
+    },
+    topStyleObj() {
+      return { 'margin-top': `${this.nowHeight(20)}px` }
+    }
+  },
   created() {
   },
   methods: {
@@ -50,27 +67,19 @@ export default {
   color: $--color-font;
   border-radius: 0.4rem;
   display: block;
-  padding: 20px;
   position: absolute;
   .title {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px 0 0 20px;
   }
 
   .rectangle-flex {
     display: flex;
     flex-wrap: wrap;
     .item {
-      margin-top: 20px;
-      width: 220px;
       vertical-align: middle;
     }
     .right {
-      margin-left: 20px;
     }
     .top {
-      margin-top: 20px;
     }
   }
 }

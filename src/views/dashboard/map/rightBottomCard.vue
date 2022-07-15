@@ -3,7 +3,7 @@
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
       <div class="title" :style="getTitleStyle()">样地碳储量排名</div>
-      <el-radio-group v-model="radio" :style="{'margin-top': `${nowHeight(20)}px`}" @change="changeRadio">
+      <el-radio-group v-model="radio" class="tree-check-radio" :style="{'margin-top': `${nowHeight(20)}px`}" @change="changeRadio">
         <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
       </el-radio-group>
       <div class="progress-div">

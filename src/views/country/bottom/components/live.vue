@@ -26,8 +26,8 @@ export default {
       playerOptions: {
         id: 'live',
         // videojs and plugin options
-        height: '225',
-        width: '400',
+        height: String(this.nowHeight(225)),
+        width: String(this.nowHeight(400)),
         language: 'zh-CN',
         sources: [{
           withCredentials: false,
@@ -58,15 +58,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.vjs-custom-skin > .video-js .vjs-big-play-button {
-  background-color: rgba(0, 0, 0, 0.45);
-  font-size: 2em;
-  border-radius: 50%;
-  height: 2em !important;
-  line-height: 2em !important;
-  margin-top: -1em !important;
-  margin-left: -1em !important;
-  width: 2em !important;
-  outline: none;
-}
 </style>

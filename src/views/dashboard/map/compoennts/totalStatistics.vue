@@ -1,24 +1,24 @@
 <template>
   <div class="total-container">
-    <div class="input-card">
-      <div class="label">样地总数</div>
-      <div class="number">
-        <span><ht-count-number :start-val="0" :end-val="115" class="value" :decimals="0" /></span>
-        <span class="unit" />
+    <div class="input-card" :style="inputCardStyleObj">
+      <div class="label" :style="labelStyleObj">样地总数</div>
+      <div class="number" :style="numberStyleObj">
+        <span><ht-count-number :start-val="0" :end-val="115" class="value" :decimals="0" :style="valueStyleObj" /></span>
+        <span class="unit" :style="unitStyleObj" />
       </div>
     </div>
-    <div class="input-card" style="margin: 0 20px">
-      <div class="label">总面积</div>
-      <div class="number">
-        <span><ht-count-number :start-val="0" :end-val="1781.58" class="value" /></span>
-        <span class="unit">万公顷</span>
+    <div class="input-card" :style="[inputCardStyleObj, marginStyleObj]">
+      <div class="label" :style="labelStyleObj">总面积</div>
+      <div class="number" :style="numberStyleObj">
+        <span><ht-count-number :start-val="0" :end-val="1781.58" class="value" :style="valueStyleObj" /></span>
+        <span class="unit" :style="unitStyleObj">万公顷</span>
       </div>
     </div>
-    <div class="input-card">
-      <div class="label">总储量</div>
-      <div class="number">
-        <span><ht-count-number :start-val="0" :end-val="4967.9" class="value" /></span>
-        <span class="unit">百万吨</span>
+    <div class="input-card" :style="inputCardStyleObj">
+      <div class="label" :style="labelStyleObj">总储量</div>
+      <div class="number" :style="numberStyleObj">
+        <span><ht-count-number :start-val="0" :end-val="4967.9" class="value" :style="valueStyleObj" /></span>
+        <span class="unit" :style="unitStyleObj">百万吨</span>
       </div>
     </div>
   </div>
@@ -49,6 +49,24 @@ export default {
     }
   },
   computed: {
+    inputCardStyleObj() {
+      return { 'padding-top': `${this.nowHeight(5)}px`, 'height': `${this.nowHeight(100)}px` }
+    },
+    labelStyleObj() {
+      return { 'font-size': `${this.nowSize(18)}px`, 'color': '#BEBEBE', 'margin-top': `${this.nowSize(15)}px` }
+    },
+    marginStyleObj() {
+      return { 'margin': `0 ${this.nowSize(20)}px` }
+    },
+    numberStyleObj() {
+      return { 'margin-top': `${this.nowHeight(5)}px` }
+    },
+    valueStyleObj() {
+      return { 'font-size': `${this.nowSize(26)}px` }
+    },
+    unitStyleObj() {
+      return { 'font-size': `${this.nowSize(16)}px` }
+    }
   },
   created() {
   },
@@ -69,23 +87,15 @@ export default {
     color: $--color-font;
     border-radius: 0.4rem;
     vertical-align: middle;
-    padding-top: 5px;
-    height: 100px;
     flex: 1;
 
     .label {
-      font-size: 18px;
-      color: #BEBEBE;
-      margin-top: 15px;
     }
     .number {
       color: $--color-font;
-      margin-top: 5px;
       .value {
-        font-size: 26px;
       }
       .unit {
-        font-size: 16px;
       }
     }
   }

@@ -1,10 +1,10 @@
 <template>
-  <el-card class="business-rectangle-card  sample-rectangle-container business-card-padding-5" shadow="always">
+  <el-card class="business-rectangle-card  sample-rectangle-container business-card-padding-5" :style="rectangleStyleObj" shadow="always">
     <div>
-      <span class="sample-value"> {{ value }}</span>
-      <span class="sample-unit"> {{ unit }}</span>
+      <span class="sample-value" :style="valueStyleObj"> {{ value }}</span>
+      <span class="sample-unit" :style="unitStyleObj"> {{ unit }}</span>
     </div>
-    <div class="sample-title">
+    <div class="sample-title" :style="titleStyleObj">
       {{ title }}
     </div>
   </el-card>
@@ -32,6 +32,23 @@ export default {
     return {
     }
   },
+  computed: {
+    rectangleStyleObj() {
+      return { 'width': `${this.nowWidth(151)}px`,
+        'height': `50px`,
+        'margin-bottom': `${this.nowHeight(10)}px`,
+        'margin-right': `${this.nowWidth(15)}px` }
+    },
+    valueStyleObj() {
+      return { 'font-size': `${this.nowSize(16)}px`, 'margin-top': `${this.nowHeight(10)}px` }
+    },
+    unitStyleObj() {
+      return { 'font-size': `${this.nowSize(12)}px` }
+    },
+    titleStyleObj() {
+      return { 'font-size': `${this.nowSize(12)}px`, 'margin-top': `${this.nowHeight(3)}px` }
+    }
+  },
   created() {
   },
   methods: {
@@ -42,26 +59,17 @@ export default {
 <style lang="scss" scoped>
 @import "~@/styles/element-variables.scss";
 .sample-rectangle-container {
-  width: 151px;
-  height: 50px;
   text-align: center;
-  margin-bottom: 10px;
-  margin-right: 15px;
   background-color: #191E2C !important;
   .sample-value {
     color: #2A9A30;
-    font-size: 16px;
     font-weight: bold;
-    margin-top: 10px;
   }
   .sample-unit {
     color: #2A9A30;
-    font-size: 12px;
   }
   .sample-title {
     color: #FFFFFF;
-    font-size: 12px;
-    margin-top: 3px;
   }
 }
 </style>

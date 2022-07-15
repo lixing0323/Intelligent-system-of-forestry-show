@@ -1,7 +1,11 @@
 <template>
-  <div class="input-card" :style="{left:'3%', bottom: '3%', width: `${width}px`, height: '430px'}">
-    <div class="title">样地数据统计</div>
-    <ht-action-panel class="table-container business-search">
+  <div
+    class="input-card"
+    :style="{left:'3%', bottom: '3%', width: `${width}px`,
+             padding: `${nowWidth(20)}px`}"
+  >
+    <div class="title" :style="getTitleStyle()">样地数据统计</div>
+    <ht-action-panel class="table-container business-search" :style="{'margin-top': `${nowHeight(20)}px`}">
       <template slot="left">
         <el-input v-model="listQuery.plot" placeholder="请输入样地区域" class="filter-item" @keyup.enter.native="onSearch" />
         <el-date-picker
@@ -16,7 +20,7 @@
         <el-button type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>
       </template>
     </ht-action-panel>
-    <ht-table ref="table" v-loading="isLoading" height="auto" class="table" :data="list" :row-class-name="tableRowClassName">
+    <ht-table ref="table" v-loading="isLoading" :max-height="tableHeight" class="table" :data="list" :row-class-name="tableRowClassName">
       <ht-table-column type="index" width="55" label="序号" />
       <ht-table-column label="样地区域" prop="area" min-width="100" />
       <ht-table-column label="树径" prop="width" min-width="100" />
@@ -44,6 +48,7 @@ export default {
   data() {
     return {
       width: document.documentElement.clientWidth * 0.94,
+      tableHeight: document.documentElement.clientHeight / 3.5,
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now()
@@ -88,15 +93,10 @@ export default {
   border-radius: 0.4rem;
   color: $--color-font;
   display: block;
-  padding: 20px;
   position: absolute;
   .title {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px 0 0 20px;
   }
   .table-container {
-    margin-top: 20px;
     .table {
     }
   }

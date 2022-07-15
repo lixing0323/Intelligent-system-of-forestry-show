@@ -1,6 +1,6 @@
 <template>
-  <div class="sensor-card" :style="{ right: '3%', bottom: '3%', width: `${width}px`, height: '420px' }">
-    <div class="title">传感器实时数据</div>
+  <div class="sensor-card" :style="{ right: '3%', top: `${top}px`, width: `${width}px`, 'padding': `${nowHeight(20)}px` }">
+    <div class="title" :style="{'font-size': `${nowSize(22)}px`, 'font-weight': 'bold', 'margin-bottom': `${nowHeight(10)}px`}">传感器实时数据</div>
     <div class="card-flex">
       <rectangle-card v-for="(item, index) in items" :key="index" class="item" :title="item.title" :unit="item.unit" :value="item.value" />
     </div>
@@ -15,7 +15,8 @@ export default {
   data() {
     return {
       items: [],
-      width: document.documentElement.clientWidth / 4 + 60
+      width: document.documentElement.clientWidth / 4 + this.nowWidth(60),
+      top: document.documentElement.clientHeight / 1.7
     }
   },
   created() {
@@ -55,12 +56,8 @@ export default {
   color: $--color-font;
   display: block;
   position: absolute;
-  padding: 20px;
 }
 .title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
 }
   .card-flex {
     display: flex;

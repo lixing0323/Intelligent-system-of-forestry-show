@@ -1,6 +1,6 @@
 <template>
-  <div class="province-title">
-    <div><span class="center-title">{{ title }}</span></div>
+  <div class="province-title" :style="{'font-size': `${nowSize(22)}px`}">
+    <div><span class="center-title" :style="{ 'padding': `0 ${nowWidth(15)}px` }">{{ title }}</span></div>
   </div>
 </template>
 
@@ -32,11 +32,9 @@ export default {
 .province-title {
   display: flex;
   flex-direction: row;
-  font-size: 22px;
   font-weight: bold;
   color: $--color-font;;
   .center-title {
-    padding: 0 15px;
   }
 }
 .province-title:before,

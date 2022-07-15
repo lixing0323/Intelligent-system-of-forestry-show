@@ -1,8 +1,8 @@
 <template>
-  <div class="video-container">
+  <div class="video-container" :style="{'width': `${nowWidth(400)}px`}">
     <div class="live"><live-content /></div>
 
-    <div class="video"><video-content /></div>
+    <div class="video" :style="{'margin-top': `${nowHeight(20)}px`}"><video-content /></div>
   </div>
 </template>
 
@@ -31,9 +31,8 @@ export default {
   top: 100px;
   display: block;
   right: 3%;
-  width: 400px;
   .video {
-    margin-top: 20px;
+
   }
 }
 

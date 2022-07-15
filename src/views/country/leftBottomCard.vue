@@ -1,6 +1,6 @@
 <template>
-  <div class="land-card" :style="{ left:'3%', bottom: '3%', width: `${width}px`, height: '420px' }">
-    <div class="title">样地基本信息
+  <div class="land-card" :style="{ left:'3%', width: `${width}px`, top: `${top}px`, 'padding': `${nowHeight(20)}px` }">
+    <div class="title" :style="{ 'font-size': `${nowSize(22)}px`, 'font-weight': 'bold','margin-bottom':`${nowHeight(10)}px`}">样地基本信息
       <el-button class="bt" icon="el-icon-data-analysis" type="primary" @click="gotoPlot()">样地统计数据</el-button>
     </div>
     <div class="icon-flex">
@@ -119,7 +119,8 @@ export default {
   data() {
     return {
       hotImage: TreeImg,
-      width: document.documentElement.clientWidth / 4 + 70
+      width: document.documentElement.clientWidth / 4 + this.nowWidth(70),
+      top: document.documentElement.clientHeight / 1.7
     }
   },
   created() {
@@ -142,12 +143,8 @@ export default {
    border-radius: 0.4rem;
    display: block;
    position: absolute;
-   padding: 20px;
  }
   .title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
     .bt {
       float: right;
     }

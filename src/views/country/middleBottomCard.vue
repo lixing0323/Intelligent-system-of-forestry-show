@@ -1,6 +1,14 @@
 <template>
-  <div class="wood-card" :style="{ left: `${left}px`, bottom: '3%', width: `${width}px`, height: '420px' }">
-    <div class="title">样木基本信息</div>
+  <div
+    class="wood-card"
+    :style="{ left: `${left}px`, top: `${top}px`, width: `${width}px`,
+              'padding': `${nowHeight(20)}px` }"
+  >
+    <div
+      class="title"
+      :style="{'font-size': `${nowSize(22)}px`, 'font-weight':'bold',
+               'margin-bottom': `${nowHeight(10)}px`}"
+    >样木基本信息</div>
     <ht-table :data="list" :stripe="false" :row-class-name="tableRowClassName">
       <ht-table-column prop="id" label="林木号" width="70" />
       <ht-table-column prop="name" label="树种学名" />
@@ -21,6 +29,7 @@ export default {
     return {
       width: document.documentElement.clientWidth / 3,
       left: document.documentElement.clientWidth / 3 + 5,
+      top: document.documentElement.clientHeight / 1.7,
       list: [
         { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
         { id: '002', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
@@ -56,12 +65,8 @@ export default {
   color: $--color-font;
   display: block;
   position: absolute;
-  padding: 20px;
 }
 
   .title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 10px;
   }
 </style>

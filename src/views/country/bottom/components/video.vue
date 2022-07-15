@@ -21,8 +21,8 @@ export default {
       playerOptions: {
         id: 'video',
         // videojs options
-        height: '225',
-        width: '400',
+        height: String(this.nowHeight(225)),
+        width: String(this.nowHeight(400)),
         autoplay: true,
         language: 'zh-CN',
         muted: true,

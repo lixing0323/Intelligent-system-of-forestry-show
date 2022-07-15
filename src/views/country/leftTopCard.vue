@@ -1,13 +1,25 @@
 <template>
-  <div class="tab-container">
-    <div class="tab-card business-tab" :style="{ width: '120px', height: 'auto' }">
+  <div class="tab-container" style="left: 3%;top: 100px">
+    <div class="tab-card business-tab" :style="{ width: `${nowWidth(120)}px`, height: 'auto' }">
       <el-tabs :tab-position="'left'">
         <el-tab-pane v-for="(t, index) in tabs" :key="index" :label="t" />
       </el-tabs>
     </div>
-    <div class="input-card" :style="{ width: '400px', height: '300px' }">
-      <div class="title">碳储量总面积占比</div>
-      <pie-chart :id="'area'" ref="eChart" :chart-data="data" class="pie" :width="320" :height="200" />
+    <div
+      class="input-card"
+      :style="{ width: `${nowWidth(350)}px`,
+                height: `${nowHeight(300)}px`, 'padding': `${nowHeight(20)}px`}"
+    >
+      <div class="title" :style="getTitleStyle()">碳储量总面积占比</div>
+      <pie-chart
+        :id="'area'"
+        ref="eChart"
+        :chart-data="data"
+        class="pie"
+        :style="{'margin': `${nowHeight(10)}px`}"
+        :width="nowWidth(320)"
+        :height="nowHeight(200)"
+      />
     </div>
   </div>
 </template>
@@ -39,8 +51,6 @@ export default {
 <style lang="scss" scoped>
 @import "~@/styles/element-variables.scss";
 .tab-container {
-  left: 3%;
-  top: 100px;
   height: auto;
   display: flex;
   flex-flow: nowrap;
@@ -57,17 +67,12 @@ export default {
     background-clip: border-box;
     border-width: 0;
     color: $--color-font;
-    border-radius: 0.4rem;
+    border-radius: 0 0.4rem 0.4rem 0;
     display: block;
     position: relative;
-    padding: 20px;
     .title {
-      font-size: 24px;
-      font-weight: bold;
-      padding: 20px 0 0 20px;
     }
     .pie {
-      margin: 10px;
     }
   }
 }
